@@ -1,0 +1,52 @@
+spring:
+  app:
+    authorizedRedirectUris:
+      - http://localhost:3000/oauth2/redirect
+  #mail sender settings
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-secret:
+            client-id:
+            redirectUri: "http://localhost:8080/oauth2/callback/{registrationId}"
+            scope:
+              - email
+              - profile
+  mail:
+    host: smtp.yandex.ru
+    username:
+    password:
+    port: 465
+    protocol: smtps
+    #not smtp because SSL is required
+  datasource:
+    url: jdbc:postgresql://localhost:5432/arbook
+    username: postgres
+    password: qwerty
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+jwt.secret-key: 7234753778214125442A472D4A614E645267556B58703273357638792F423F45
+
+#mail sender settings
+
+
+mail:
+  debug: true
+#!!!remove this after deploying
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
